@@ -107,7 +107,7 @@ public class AugmentedImageActivity extends AppCompatActivity implements GLSurfa
     surfaceView.setPreserveEGLContextOnPause(true);
     surfaceView.setEGLContextClientVersion(2);
     surfaceView.setEGLConfigChooser(8, 8, 8, 8, 16, 0); // Alpha used for plane blending.
-    surfaceView.setRenderer(this);
+    surfaceView.setRenderer(this); //为 surfaceView 设置监听
     surfaceView.setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
     surfaceView.setWillNotDraw(false);
 

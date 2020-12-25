@@ -468,6 +468,8 @@ class HelloArActivity2 : AppCompatActivity(), SampleRender.Renderer {
      */
     private fun drawNonOccludedVirtualObjects(frame: Frame, camera: Camera) {
 
+        Log.d(TAG,"--- drawNonOccludedVirtualObjects ---")
+
         // 获取投影矩阵
         camera.getProjectionMatrix(projectionMatrix, 0, Z_NEAR, Z_FAR)
 
@@ -496,6 +498,9 @@ class HelloArActivity2 : AppCompatActivity(), SampleRender.Renderer {
      * 绘制被遮挡的虚拟对象
      */
     private fun drawOccludedVirtualObjects(frame: Frame) {
+
+        Log.d(TAG, "--- drawOccludedVirtualObjects ---")
+
         // -- 绘制被遮挡的虚拟对象
 
         // 更新着色器中的照明参数
@@ -528,7 +533,9 @@ class HelloArActivity2 : AppCompatActivity(), SampleRender.Renderer {
     }
 
     //每帧只处理一次点击，因为和点击频率经常比帧速率低
+    //如果点击有效，则添加创建一个锚点并添加到 anchors 集合中
     private fun handleTap(frame: Frame, camera: Camera) {
+        Log.d(TAG,"---- handleTap ----")
         val tap = tapHelper!!.poll()
         if (tap != null && camera.trackingState == TrackingState.TRACKING) {
             val hitResultList: List<HitResult> = if (instantPlacementSettings.isInstantPlacementEnabled) {
